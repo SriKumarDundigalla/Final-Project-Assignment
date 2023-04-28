@@ -1,9 +1,11 @@
-from flask import Flask, redirect
+from flask import Flask, redirect,jsonify
 from flask import render_template
 from flask import request,session
 from flask_session import Session
 import sqlite3
+import random
 
+random.seed(1997)
 
 
 
@@ -101,30 +103,29 @@ def landing():
     return render_template('landing_login.html')
 @app.route("/myreview",methods=["GET", "POST"])
 def myreview():
+    con=sqlite3.connect('database.db')
     if request.method=='POST':
         try:
-            print('hi')
-            name = request.form['username']
+
+            email = session['email']
             review = request.form['review']
             rating = int(request.form.get('rating_stars'))
-            with sqlite3.connect('database.db') as con:
-                con.row_factory = sqlite3.Row
-
-
-                cur = con.cursor()
-                cur.execute("INSERT INTO Reviews (name, review, rating) VALUES (?,?,?)",(name,review,rating))
-                con.commit()
-
-
-                return render_template("myreview.html",msg="Review Added Sucessfully") 
+            con.row_factory = sqlite3.Row
+            print(email,review,rating)
+            cur = con.cursor()
+            cur.execute("INSERT INTO Reviews (email, review, rating) VALUES (?,?,?)",(email,review,rating))
+            con.commit()
+            return render_template("myreview.html",msg=["Review Added Sucessfully",session['email']]) 
         except:
-            con.rollback()
-            msg = "Error in the INSERT"
+            msg = "User can add review only once"
+            return render_template('myreview.html',msg=[msg,session['email']])
         finally:
+            
             con.close()
             
     if request.method=='GET':
-        return render_template('myreview.html',msg="")
+
+        return render_template('myreview.html',msg=["",session['email']])
 @app.route("/reviews",methods = ['POST', 'GET'])  
 def reviews():
     if request.method == 'GET':
@@ -156,7 +157,19 @@ def courses():
         rows=[rows,'','']
         return render_template("layoutCourse.html",rows=rows)
 
-
+@app.route('/data')
+def data():
+    con=sqlite3.connect('database.db')
+    cur = con.cursor()
+    cur.execute("SELECT usercourse FROM mycourse WHERE Email = ? ",(session['email'],))
+    row = cur.fetchall()
+    courses=list(row)
+    random_hours1 = list(map(lambda x:len(x)*100*10,courses[1::2]))
+    random_hours2 = list(map(lambda x:len(x)*100*30,courses[0::2]))
+    random_hours= random_hours1+random_hours2
+    data = {'labels': courses,
+            'data': random_hours}
+    return jsonify(data)
 @app.route("/addtocart",methods = ['POST', 'GET'])
 def addtocart():
     try:
@@ -167,8 +180,13 @@ def addtocart():
                 cardtitle = request.form.get('Card_title')
                 con=sqlite3.connect('database.db')
                 cur = con.cursor()
+                cur.execute("SELECT * FROM mycourse WHERE Email = ? and usercourse =? ",(session['email'],cardtitle))
+                data = cur.fetchone()
                 cur.execute("SELECT * FROM About_Course")
                 rows = cur.fetchall()
+                if(data):
+                    rows=[rows,'','The course you are trying to purchase has already been acquired by you.']
+                    return render_template("layoutCourse.html",rows=rows) 
                 rows=[rows,'The course has been successfully added to the cart.','']
                 cur.execute("INSERT INTO userCourses (Email,courseName ) VALUES (?,?)",(session['email'],cardtitle))
                 con.commit()
@@ -207,10 +225,14 @@ def mycourses():
             cur = con.cursor()
             cur.execute("SELECT * FROM userCourses WHERE Email = ?", (session['email'],))
             rows = cur.fetchall()
+            cur.execute("SELECT * FROM mycourse  WHERE Email = ?", (session['email'],))
+            data = cur.fetchall()
+            r=list(data)+list(rows)
             for i in list(rows):
                 cur.execute("INSERT INTO mycourse (Email, usercourse) VALUES (?, ?)", i)
             con.commit()
-            courses = tuple(list(map(lambda x: x[1], list(rows))))
+            courses = tuple(list(map(lambda x: x[1], r)))
+            print(courses)
             cur.execute("DELETE FROM userCourses WHERE Email = ?", (session['email'],))
             con.commit()
             cur.execute("SELECT * FROM About_Course WHERE courseName IN ({})".format(','.join('?' * len(courses))), courses)
@@ -224,6 +246,7 @@ def mycourses():
             courses = tuple(list(map(lambda x: x[1], list(rows))))
             cur.execute("SELECT * FROM About_Course WHERE courseName IN ({})".format(','.join('?' * len(courses))), courses)
             rows = cur.fetchall()
+            print(rows)
             return render_template('mycourses.html',rows=rows)
     except Exception as e:
         print(e)

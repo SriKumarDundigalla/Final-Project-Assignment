@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col">
       <div class="pt-3">
-        <h1 class="display-1">Login</h1>
+        <h1 class="display-1" tabindex="1">Login</h1>
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
     <div class="col-md-6">
       <form class="pt-5"  method="POST" action="{{ url_for('login')}}">
         <div class="mb-3">
-          <label for="lEmail1" class="form-label h5">Email<i class="bi bi-asterisk astric pt-1"></i></label>
+          <label for="lEmail1" class="form-label h5" tabindex="1">Email<i class="bi bi-asterisk astric pt-1"></i></label>
           <input type="email" class="form-control text-lowercase" id="lEmail1" name="lEmail1" aria-describedby="emailHelp" required onkeyup="login_email(event)" placeholder="abc@gmail.com">
           <span id="Lemailalert" hidden>
             <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -40,7 +40,7 @@
           </span>
         </div>
         <div class="mb-3">
-          <label for="lPassword1" class="form-label h5">Password<i class="bi bi-asterisk astric pt-1"></i></label>
+          <label for="lPassword1" class="form-label h5" tabindex="1">Password<i class="bi bi-asterisk astric pt-1"></i></label>
           <div class="input-group">
             <input type="password" class="form-control" id="lPassword1" name="lPassword1" aria-describedby="password" required onkeyup="login_password(event)" onclick="login_password_focus(event)" placeholder="password" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Must Be 6 Characters">
             <span class="input-group-text" id="inputGroupPrepend" onclick="show_password(event)"><i id="showp" class="bi bi-eye"></i></span>

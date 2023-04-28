@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-4">
       <div class="pt-3">
-        <h1 class="display-5">Signup</h1>
+        <h1 class="display-5" tabindex="1">Signup</h1>
       </div>
     </div> 
   </div>
@@ -29,7 +29,7 @@
       <form class="pt-5" method="post" action="{{ url_for('signup') }}">
         <div class="row">
           <div class="col mb-3">
-            <label for="fn" class="form-label h3">First Name<i class="bi bi-asterisk astric pt-1"></i></label>
+            <label for="fn" class="form-label h3" tabindex="1">First Name<i class="bi bi-asterisk astric pt-1"></i></label>
               <input type="text" class="form-control" id="fn" name="fn" placeholder="First Name" aria-describedby="First Name" onkeyup="fnreuired(event)" onclick="fn_on_focus(event)">
               <span id="fnalert" hidden>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -41,7 +41,7 @@
               </span>
           </div>
           <div class="col mb-3">
-            <label for="ln" class="form-label h3">Last Name<i class="bi bi-asterisk astric pt-1"></i></label>
+            <label for="ln" class="form-label h3" tabindex="1">Last Name<i class="bi bi-asterisk astric pt-1"></i></label>
             <input type="text" class="form-control" id="ln" name="ln" placeholder="Last Name" aria-describedby="Last Name" onkeyup="lnreuired(event)" onclick="ln_on_focus(event)">
             <span id="lnalert" hidden>
               <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="Email1" class="form-label h3">Email<i class="bi bi-asterisk astric pt-1"></i></label>
+          <label for="Email1" class="form-label h3" tabindex="1">Email<i class="bi bi-asterisk astric pt-1"></i></label>
           <input type="email" class="form-control" id="Email1" name="Email1" aria-describedby="email" placeholder="abc@gmail.com" required onkeyup="email_required(event)">
           <span id="Emailalert" hidden>
             <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -66,10 +66,10 @@
           </span>
         </div>
         <div class="mb-3">
-          <label for="Password1" class="form-label h3">Password<i class="bi bi-asterisk astric pt-1"></i></label>
+          <label for="Password1" class="form-label h3" tabindex="1">Password<i class="bi bi-asterisk astric pt-1"></i></label>
           <div class="input-group">
             <input type="password" class="form-control" id="Password1" name="Password1" required
-            onkeyup="check_pass(event)" placeholder="Password" aria-describedby="Password">
+            onkeyup="check_pass(event)" placeholder="Password" aria-describedby="Password" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Must Be 6 Characters">
             <span class="input-group-text" id="inputGroupPrepend" onclick="sshow_password(event)"><i id="sigshowp" class="bi bi-eye"></i></span>
           </div>
           <span id="e1" hidden>
@@ -98,11 +98,11 @@
           </span>
         </div>
         <div class="mb-3">
-          <label for="Password2" class="form-label h3">Confirm Password<i
+          <label for="Password2" class="form-label h3" tabindex="1">Confirm Password<i
               class="bi bi-asterisk astric pt-1"></i></label>
               <div class="input-group">
                 <input type="password" class="form-control" id="Password2" name="Password2" required
-                onkeyup="chech_match(event)" placeholder="Confirm Password" aria-describedby="Confirm Password">
+                onkeyup="chech_match(event)" placeholder="Confirm Password" aria-describedby="Confirm Password" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Must Be 6 Characters">
                 <span class="input-group-text" id="inputGroupPrepend" onclick="sshow_cpassword(event)"><i id="sigshowcp" class="bi bi-eye"></i></span>
               </div>
 
@@ -118,7 +118,7 @@
 
         </div>
         <div class="d-grid pb-3">
-          <button class="btn btn-primary" type="submit" id="btnlogin" disabled >Sign up</button>
+          <button class="btn btn-primary" type="submit" id="btnlogin" disabled tabindex="1">Sign up</button>
           <span class="ms-1" >Already a member?<span class="text-primary ms-1"><a href="{{ url_for('login') }}">Login</a></span></span>
         </div>
        

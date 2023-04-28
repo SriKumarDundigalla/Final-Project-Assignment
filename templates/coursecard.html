@@ -4,10 +4,10 @@
       <form action="{{ url_for('addtocart') }}" method="POST">
         <img src="{{url_for('static', filename='img/'+data[0])}}" class="card-img-top img-fluid p-3" alt="Courses Image">
       <div class="card-body">
-        <h5 class="card-title"><input type="input" name="Card_title" hidden value="{{data[1]}}">{{data[1]}}</h5>
-        <p class="card-text">{{data[2]}}</p>
-        <h5 class="card-title">Cost <span>{{data[3]}}$</span></h5>
-        <button type="submit"  class="btn btn-primary">Add To Cart</button>
+        <h5 class="card-title"><input type="input" name="Card_title" hidden value="{{data[1]}}" tabindex="1">{{data[1]}}</h5>
+        <p class="card-text" tabindex="1">{{data[2]}}</p>
+        <h5 class="card-title" tabindex="1">Cost <span>{{data[3]}}$</span></h5>
+        <button type="submit"  class="btn btn-primary" tabindex="1">Add To Cart</button>
       </div>
     </form>
     </div>

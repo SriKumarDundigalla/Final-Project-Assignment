@@ -3,9 +3,9 @@
   <form method="post" action="{{ url_for('removeitem') }}"> 
     <div class="card border-success mb-3">
         <div class="card-body">
-          <input type="text" value="{{data[1]}}" name="coursetitle" hidden><h5 class="card-title">{{data[1]}} <span aria-label="Bootstrap"><input type="text" value="{{data[0]}}" name="url" hidden><img class="img-fluid" height="50" width="50"  src="{{url_for('static', filename='img/'+data[0])}}" alt="{{data[0]+' course image'}}"></span></h5>
-          <input type="text" value="{{data[3]}}"  name="cost" hidden><h5 class="card-title">Cost <span>{{data[3]}}$</span></h5>
-          <button class="btn btn-danger" type="submit">Remove</button>
+          <input type="text" value="{{data[1]}}" name="coursetitle" hidden><h5 class="card-title" tabindex="1">{{data[1]}} <span aria-label="Bootstrap"><input type="text" value="{{data[0]}}" name="url" hidden><img class="img-fluid" height="50" width="50"  src="{{url_for('static', filename='img/'+data[0])}}" alt="{{data[0]+' course image'}}"></span></h5>
+          <input type="text" value="{{data[3]}}"  name="cost" hidden><h5 class="card-title"  tabindex="1">Cost <span>{{data[3]}}$</span></h5>
+          <button class="btn btn-danger" type="submit" tabindex="1">Remove</button>
         </div>
       </div>
     </form>

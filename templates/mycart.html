@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
               
-                  <h1 class="p-5 display-1 text-secondary text-center">Cart is Empty<i class="bi bi-cart-dash ms-1"></i></h1>
+                  <h1 class="p-5 display-1 text-secondary text-center" tabindex="1">Cart is Empty<i class="bi bi-cart-dash ms-1"></i></h1>
         
             </div>
           </div>
@@ -23,7 +23,7 @@
             </div>
             
             <div class="col-4">
-                <h1 class="pt-5">List Of Course Adeed To cart</h1>
+                <h1 class="pt-5" tabindex="1">List Of Course Adeed To cart</h1>
                 <form method="post" action="{{ url_for('mycourses') }}">
                     <Ol class="list-group list-group-flush">
                     {% for row in rows[0] %}
@@ -33,7 +33,7 @@
                             <div class="input-group">
                                 <label for="{{row[1]}}" class="form-label h5">{{row[1]}}</label>
                                 <input value="{{row[1]}}" type="text" name="coursetitle" class="form-control" id="{{row[1]}}" aria-describedby="name" hidden>
-                                <span class="h5 ms-1">Cost:  <span>{{row[3]}}$</span></span>
+                                <span class="h5 ms-1" tabindex="1">Cost:  <span>{{row[3]}}$</span></span>
                             </div>
                         </div>
                     </li>
@@ -41,7 +41,7 @@
                     <li class="list-group-item"><p class="h1 bold float-end pe-5">{{rows[1]}}$</p></li>
                     </Ol>
                     <div class="mb-3 pt-3">
-                        <button type="submit" class="btn btn-primary btn-lg">Pay Now</button>
+                        <button type="submit" class="btn btn-primary btn-lg" tabindex="1">Pay Now</button>
                     </div>
                 </form>
             </div>

@@ -2,14 +2,14 @@
 {% extends "layout2.html" %}
 {% block content %}
     <div class="container-fluid">
-        {% if msg!="" %}
+        {% if msg[0]!="" %}
   <div class="row p-3 justify-content-center">
     <div class="col-6 align-self-center">
       <span class="mt-3">
         <div class="alert alert-success d-flex align-items-center" role="alert">
             <i class="bi bi-layout-text-window-reverse me-2"></i>
           <div>
-            {{msg}}
+            {{msg[0]}}
           </div>
         </div>
       </span>
@@ -21,7 +21,7 @@
             <div class="col-8 p-5">
                 <div class="card text-white bg-secondary">
                     <div class="card-title text-center ">
-                        <h5 class="display-1">Add Your Review</h5>
+                        <h5 class="display-1" tabindex="1">Add Your Review</h5>
                     </div>
                     <div class="card-body">
                         <div class="row justify-content-center">
@@ -30,17 +30,17 @@
                                     <form  action="{{ url_for('myreview') }}" method="post">
     
                                         <div class="mb-3">
-                                            <label for="name" class="form-label h5">Name <i class="bi bi-asterisk astric pt-1"></i></label>
-                                            <input type="name" class="form-control" name="username" id="name" aria-describedby="name" required>
+                                            <label for="remail" class="form-label h5" tabindex="1">Email <i class="bi bi-asterisk astric pt-1"></i></label>
+                                            <input type="name" class="form-control" disabled value="{{msg[1]}}" name="remail" id="remail" aria-describedby="name" required>
                                         </div>
     
     
                                         <div class="mb-3">
-                                            <label for="review" class="form-label h5">Your Review <i class="bi bi-asterisk astric pt-1"></i></label>
+                                            <label for="review" class="form-label h5" tabindex="1">Your Review <i class="bi bi-asterisk astric pt-1"></i></label>
                                             <textarea class="form-control" id="review" name="review" rows="3" required maxlength=252></textarea>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="rating" class="form-label h5 ms-1">Rating <i class="bi bi-asterisk astric pt-1"></i></label>
+                                            <label for="rating" class="form-label h5 ms-1" tabindex="1">Rating <i class="bi bi-asterisk astric pt-1"></i></label>
                                             <div id="rating" name="rating" class="rating ms-1">
                                                 <label><input type="radio" name="rating_stars" value="1"><i class="bi bi-star"></i></label>
                                                 <label><input type="radio" name="rating_stars" value="2"><i class="bi bi-star"></i></label>

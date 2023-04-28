@@ -5,7 +5,7 @@
         <div class="rounded  border border-2 text-dark bg-warning mb-3 ms-5" style="max-width: 88rem;">
             <div class="row">
                 <div class="col text-center">
-                    <h1 class="display-1">My Account</h1>
+                    <h1 class="display-1" tabindex="1">My Account</h1>
                 </div>
             </div>
             {% if rows[1]!="" %}
@@ -41,7 +41,7 @@
                 <form method="post" action="{{ url_for('myaccount') }}">
                     <div class="row">
                       <div class="col mb-3">
-                        <label for="myfn" class="form-label h3">First Name<i class="bi bi-asterisk astric pt-1"></i></label>
+                        <label for="myfn" class="form-label h3" tabindex="1">First Name<i class="bi bi-asterisk astric pt-1"></i></label>
                           <input type="text" class="form-control" id="myfn" name="myfn" placeholder="First Name" aria-describedby="First Name" onkeyup="myfnreuired(event)" onclick="fn_on_focus(event)" value="{{rows[0][0]}}">
                           <span id="myfnalert" hidden>
                             <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -53,7 +53,7 @@
                           </span>
                       </div>
                       <div class="col mb-3">
-                        <label for="myln" class="form-label h3">Last Name<i class="bi bi-asterisk astric pt-1"></i></label>
+                        <label for="myln" class="form-label h3" tabindex="1">Last Name<i class="bi bi-asterisk astric pt-1"></i></label>
                         <input type="text" class="form-control" id="myln" name="myln" placeholder="Last Name" aria-describedby="Last Name" onkeyup="mylnreuired(event)" onclick="ln_on_focus(event)" value="{{rows[0][1]}}">
                         <span id="mylnalert" hidden>
                           <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="myEmail1" class="form-label h3">Email<i class="bi bi-asterisk astric pt-1"></i></label>
+                      <label for="myEmail1" class="form-label h3" tabindex="1">Email<i class="bi bi-asterisk astric pt-1"></i></label>
                       <input type="email" class="form-control" id="myEmail1" name="myEmail1" aria-describedby="email" disabled placeholder="abc@gmail.com" required onkeyup="myemail_required(event)" value="{{rows[0][2]}}">
                       <span id="myEmailalert" hidden>
                         <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -78,7 +78,7 @@
                       </span>
                     </div>
                     <div class="mb-3">
-                      <label for="myPassword1" class="form-label h3">Password<i class="bi bi-asterisk astric pt-1"></i></label>
+                      <label for="myPassword1" class="form-label h3" tabindex="1">Password<i class="bi bi-asterisk astric pt-1"></i></label>
                       <div class="input-group">
                         <input type="password" class="form-control" id="myPassword1" name="myPassword1" required
                         onkeyup="mycheck_pass(event)" placeholder="Password" aria-describedby="Password" value="{{rows[0][3]}}">

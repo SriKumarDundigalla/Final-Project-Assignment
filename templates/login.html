@@ -42,7 +42,7 @@
         <div class="mb-3">
           <label for="lPassword1" class="form-label h5">Password<i class="bi bi-asterisk astric pt-1"></i></label>
           <div class="input-group">
-            <input type="password" class="form-control" id="lPassword1" name="lPassword1" required onkeyup="login_password(event)" onclick="login_password_focus(event)" placeholder="password" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Must Be 6 Characters">
+            <input type="password" class="form-control" id="lPassword1" name="lPassword1" aria-describedby="password" required onkeyup="login_password(event)" onclick="login_password_focus(event)" placeholder="password" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Must Be 6 Characters">
             <span class="input-group-text" id="inputGroupPrepend" onclick="show_password(event)"><i id="showp" class="bi bi-eye"></i></span>
           </div>
           <span id="Lpasswordalert" hidden>

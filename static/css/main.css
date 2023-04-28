@@ -1,0 +1,99 @@
+.section1 {
+    background: linear-gradient(-90deg, rgb(255 106 106) -20%, rgb(255, 255, 255) 122%);
+}
+
+.section2 {
+    background: linear-gradient(-90deg, rgb(231 231 231) -45%, rgb(0 0 0) 200%)
+}
+
+.section3 {
+
+    background: linear-gradient(-90deg, rgb(255 255 255) -2%, rgb(0 166 255) 80%);
+
+
+}
+
+.section4 {
+    background: linear-gradient(-90deg, rgb(163 255 203) -155%, rgb(255, 255, 255) 124%);
+}
+
+.section5 {
+
+    background: linear-gradient(-90deg, rgb(255 255 255) -6%, rgb(210 235 243) 80%);
+
+}
+
+.section6 {
+    background: linear-gradient(-90deg, rgb(255 190 84) 0%, rgb(255, 255, 255) 135%);
+}
+.section1-login {
+    background: linear-gradient(-90deg, rgb(231 231 231) -45%, rgb(0, 208, 255) 200%);
+  
+  }
+.no-padding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+body { padding-top: 76px; }
+
+
+.login
+{
+    background-image: url('../img/section-login.png');
+    background-size: cover;
+}
+
+.About-section1 {
+  
+    background-image: linear-gradient(110deg, #b59aff -20%, #ffffff00 120%);
+  }
+  
+  .About-section3 {
+    background-image: linear-gradient(110deg, #a3fffa -20%, #ffffff00 120%);
+  }
+  
+  .About-section2 {
+    background-image: linear-gradient(110deg, #b2ffbb -20%, #ffffff00 120%);
+  }
+  
+  .About-section4 {
+
+    background-image: linear-gradient(110deg, hsl(0, 100%, 68%) -20%, #ffffff00 120%);
+  }
+  .bi-star {
+    cursor: pointer;
+  }
+  .bi-star-fill{
+    color: yellow;
+    border: black;
+    cursor: pointer;
+  }
+  #myratingChart {
+    height: 400px !important;
+    width: 400px !important;
+  }
+.astric{
+  font-size: 0.5rem !important;
+  color: red;
+  margin-bottom: 2rem;
+  display: inline-block;
+  vertical-align: top;
+}
+.card:hover {
+  transform: scale(1.02);
+  transition: all ease 0.3s;
+}
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+
+#rating input[type="radio"]{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#rating label i {
+  cursor: pointer;
+}

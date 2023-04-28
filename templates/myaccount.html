@@ -1,0 +1,121 @@
+{% from "displaycard.html" import displayCard %}
+{% extends "layout2.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="rounded  border border-2 text-dark bg-warning mb-3 ms-5" style="max-width: 88rem;">
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="display-1">My Account</h1>
+                </div>
+            </div>
+            {% if rows[1]!="" %}
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <span class="mt-3">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          <div>
+            {{rows[1]}}
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+  {% endif %}
+  {% if rows[2]!="" %}
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <span class="mt-3">
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+          <i class="bi bi-bag-check-fill me-2"></i>
+          <div>
+            {{rows[2]}}
+          </div>
+        </div>
+      </span>
+
+    </div>
+  </div>
+{% endif %}
+            <div class="row px-5 pb-5">
+                <form method="post" action="{{ url_for('myaccount') }}">
+                    <div class="row">
+                      <div class="col mb-3">
+                        <label for="myfn" class="form-label h3">First Name<i class="bi bi-asterisk astric pt-1"></i></label>
+                          <input type="text" class="form-control" id="myfn" name="myfn" placeholder="First Name" aria-describedby="First Name" onkeyup="myfnreuired(event)" onclick="fn_on_focus(event)" value="{{rows[0][0]}}">
+                          <span id="myfnalert" hidden>
+                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                              <div>
+                                First Name is required
+                              </div>
+                            </div>
+                          </span>
+                      </div>
+                      <div class="col mb-3">
+                        <label for="myln" class="form-label h3">Last Name<i class="bi bi-asterisk astric pt-1"></i></label>
+                        <input type="text" class="form-control" id="myln" name="myln" placeholder="Last Name" aria-describedby="Last Name" onkeyup="mylnreuired(event)" onclick="ln_on_focus(event)" value="{{rows[0][1]}}">
+                        <span id="mylnalert" hidden>
+                          <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <div>
+                              Last Name required
+                            </div>
+                          </div>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="myEmail1" class="form-label h3">Email<i class="bi bi-asterisk astric pt-1"></i></label>
+                      <input type="email" class="form-control" id="myEmail1" name="myEmail1" aria-describedby="email" disabled placeholder="abc@gmail.com" required onkeyup="myemail_required(event)" value="{{rows[0][2]}}">
+                      <span id="myEmailalert" hidden>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                          <div>
+                            Email is required
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <div class="mb-3">
+                      <label for="myPassword1" class="form-label h3">Password<i class="bi bi-asterisk astric pt-1"></i></label>
+                      <div class="input-group">
+                        <input type="password" class="form-control" id="myPassword1" name="myPassword1" required
+                        onkeyup="mycheck_pass(event)" placeholder="Password" aria-describedby="Password" value="{{rows[0][3]}}">
+                        <span class="input-group-text" id="myinputGroupPrepend" onclick="mysshow_password(event)"><i id="mysigshowp" class="bi bi-eye"></i></span>
+                      </div>
+                      <span id="mye1" hidden>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                          <div>
+                            Password must have atleast have 6 Characters.
+                          </div>
+                        </div>
+                      </span>
+                      <span id="mye2" hidden>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                          <div>
+                            Password must have atleast 1 special Character.
+                          </div>
+                        </div>
+                      </span>
+                      <span id="mye3" hidden>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                          <div>
+                            Password must have atleast 1 Captial letter.
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <div class="d-grid pb-3">
+                      <button class="btn btn-primary" type="submit" id="mybtnlogin">Update</button>
+                      
+                    </div>
+                  </form>
+            </div>
+          </div>
+          <script src="{{url_for('static', filename='js/myaccount.js')}}"></script> 
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% from "coursecard.html" import coursecard %}
+{% extends "layout2.html" %}
+{% block content %}
+<div class="container-fluid bg-light text-dark">
+  <div class="row">
+    <div class="col text-center">
+        <h1 class="display-1">Courses</h1>
+    </div>
+</div>
+{% if rows[1]!="" %}
+  <div class="row ">
+    <div class="col-6 align-self-center">
+      <span class="mt-3">
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+          <i class="bi bi-bag-check-fill me-2"></i>
+          <div>
+            {{rows[1]}}
+          </div>
+        </div>
+      </span>
+
+    </div>
+  </div>
+{% endif %}
+
+{% if rows[2]!="" %}
+  <div class="row">
+    <div class="col-6 align-self-center">
+      <span class="mt-3">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          <div>
+            {{rows[2]}}
+          </div>
+        </div>
+      </span>
+
+    </div>
+  </div>
+{% endif %}
+
+
+  <div class="row">
+    {% for row in rows[0] %}
+    {{coursecard(row)}}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

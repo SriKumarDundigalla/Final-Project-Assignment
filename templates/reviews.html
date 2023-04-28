@@ -1,0 +1,36 @@
+{% from "reviewscard.html" import reviewcard %}
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid bg-light text-dark">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-1">Reviews</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for row in rows %}
+            {{reviewcard(row)}}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col">
+                <div class="d-flex align-items-center justify-content-center">
+                    <h1>User Rating</h1>
+                    <canvas id="myratingChart" class="p-2"></canvas>
+                  </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{url_for('static', filename='js/reviews.js')}}"></script>    
+{% endblock %}
+
+
+
+
+
+
+ 
+

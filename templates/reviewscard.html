@@ -1,0 +1,18 @@
+{% macro reviewcard(data) %}
+<div class="col-sm-6 p-2">
+    <div class="card text-white bg-secondary">
+        <div class="card-body">
+            <h5 class="card-title">{{data[0]}}</h5>
+            <p class="card-text">{{data[1]}}</p>
+            <div>
+                {% for row in range(data[2]) %}
+                <i class="bi bi-star-fill"></i>
+                {% endfor %}
+                {% for row in range(5-data[2]) %}
+                <i class="bi bi-star"></i>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

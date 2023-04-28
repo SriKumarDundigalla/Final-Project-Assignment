@@ -1,0 +1,38 @@
+{% from "displaycard.html" import displayCard %}
+{% extends "layout2.html" %}
+{% block content %}
+    <div class="container-fluid">
+        {% if not rows %}
+        <div class="row justify-content-center">
+            <div class="col-12">
+              
+                  <h1 class="p-5 display-1 text-secondary text-center">No Courses purchsed<i class="bi bi-book"></i></h1>
+        
+            </div>
+          </div>
+        {% endif %}
+        {% if rows %}
+        <div class="row">
+            <div class="col-8 p-5">
+                <h1>Learning Place</h1>
+                <div class="row rounded-3 overflow-auto border-info border-5" style="height:500px">
+                        {% for row in rows %}
+                        <div class="col-6 col-md-3 mb-3 mt-3">
+                            <div class="card h-100">
+                              <form>
+                                <img src="{{url_for('static', filename='img/'+row[0])}}" class="card-img-top img-fluid p-3" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title"><input type="input" name="Card_title" hidden value="{{row[1]}}">{{row[1]}}</h5>
+                                <p class="card-text">{{row[2]}}</p>
+                                <button type="submit"  class="btn btn-primary">Start Learning</button>
+                              </div>
+                            </form>
+                            </div>
+                          </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

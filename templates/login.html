@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<div class="container-fluid section1-login">
+  <div class="row">
+    <div class="col">
+      <div class="pt-3">
+        <h1 class="display-1">Login</h1>
+      </div>
+    </div>
+  </div>
+  {% if msg!="" %}
+  <div class="row">
+    <div class="col-6">
+      <span class="mt-3">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          <div>
+            {{msg}}
+          </div>
+        </div>
+      </span>
+
+    </div>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-md-6">
+      <form class="pt-5"  method="POST" action="{{ url_for('login')}}">
+        <div class="mb-3">
+          <label for="lEmail1" class="form-label h5">Email<i class="bi bi-asterisk astric pt-1"></i></label>
+          <input type="email" class="form-control text-lowercase" id="lEmail1" name="lEmail1" aria-describedby="emailHelp" required onkeyup="login_email(event)" placeholder="abc@gmail.com">
+          <span id="Lemailalert" hidden>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              <div>
+                Email is required
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="lPassword1" class="form-label h5">Password<i class="bi bi-asterisk astric pt-1"></i></label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="lPassword1" name="lPassword1" required onkeyup="login_password(event)" onclick="login_password_focus(event)" placeholder="password" data-bs-toggle="tooltip" data-bs-placement="top" title="Password Must Be 6 Characters">
+            <span class="input-group-text" id="inputGroupPrepend" onclick="show_password(event)"><i id="showp" class="bi bi-eye"></i></span>
+          </div>
+          <span id="Lpasswordalert" hidden>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              <div>
+                Password is required
+              </div>
+            </div>
+          </span>
+        </div>
+        
+        <div class="d-grid pb-2">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+        <span >Not a member?<span class="text-primary ms-1"><a href="{{ url_for('signup') }}">Sign Up Now</a></span></span>
+
+      </form>
+    </div>
+    <div class="col-md-6">
+      <img class="img-fluid" src="{{url_for('static', filename='img/section-login.png')}}" >
+    </div>
+  </div>
+  
+  <script src="{{url_for('static', filename='js/login.js')}}"></script> 
+</div>
+{% endblock %}
+
+  
+
+ 

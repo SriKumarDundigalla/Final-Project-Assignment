@@ -1,0 +1,20 @@
+{% from "coursecard.html" import coursecard %}
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid bg-light text-dark">
+  <div class="row">
+    <div class="col text-center">
+        <h1 class="display-1">Courses</h1>
+    </div>
+</div>
+  <div class="row">
+    {% for row in rows %}
+    {{coursecard(row)}}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+  
+
+    
